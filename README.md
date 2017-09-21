@@ -2,6 +2,11 @@
 
 Welcome to Temporary OmniAuth App!
 
+[![CircleCI](https://circleci.com/gh/jhsu802701/omni-20170921-154716-750.svg?style=svg)](https://circleci.com/gh/jhsu802701/omni-20170921-154716-750)
+[![Dependency Status](https://gemnasium.com/badges/github.com/jhsu802701/omni-20170921-154716-750.svg)](https://gemnasium.com/github.com/jhsu802701/omni-20170921-154716-750)
+[![security](https://hakiri.io/github/jhsu802701/omni-20170921-154716-750/master.svg)](https://hakiri.io/github/jhsu802701/omni-20170921-154716-750/master)
+[![Code Climate](https://codeclimate.com/github/jhsu802701/omni-20170921-154716-750/badges/gpa.svg)](https://codeclimate.com/github/jhsu802701/omni-20170921-154716-750)
+
 ## How was this app created?
 This Rails app was created with the 
 [Rails Neutrino](https://github.com/jhsu802701/rails_neutrino_5) scripts.  The time at which this app was created is denoted in the config/rails_neutrino_timestamp.txt file.
