@@ -144,3 +144,9 @@ gem 'will_paginate', '3.1.6' # For pagination
 
 # User search engine
 gem 'ransack', '1.8.3'
+
+# BEGIN: omniauth
+gem 'dotenv-rails', '2.2.1' # Needed to export API and secret values into environment variables
+gem 'omniauth-facebook', '4.0.0'
+gem 'omniauth-google-oauth2', '0.5.2'
+# END: omniauth

@@ -25,6 +25,8 @@
 #  last_name              :string
 #  first_name             :string
 #  username               :string
+#  provider               :string
+#  uid                    :string
 #
 
 #
@@ -54,7 +56,7 @@ class User < ApplicationRecord
   # BEGIN: devise modules
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :confirmable, :lockable
+         :confirmable, :lockable, :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
   # END: devise modules
 
   before_save :downcase_email, :downcase_username
@@ -71,6 +73,35 @@ class User < ApplicationRecord
   validates :username, presence: true, length: { maximum: 255 },
                        format: { with: VALID_USERNAME_REGEX },
                        uniqueness: { case_sensitive: false }
+
+  def self.from_omniauth(auth)
+    where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
+      t_sec = Time.now.to_f
+      t_usec = (t_sec * 1_000_000).to_i
+      user.username = "user_omni_#{t_usec}"
+      user.email = auth.info.email
+      user.password = Devise.friendly_token[0, 20]
+      user.confirmed_at = Time.now
+      name_auth = auth.info.name
+      name_auth_array = name_auth.gsub(/\s+/m, ' ').strip.split(' ')
+      user.last_name = name_auth_array.first
+      user.first_name = name_auth_array.last
+      if auth.provider == 'google'
+        user.last_name = auth.info.last_name
+        user.first_name = auth.info.first_name
+      end
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session['devise.facebook_data'] && session['devise.facebook_data']['extra']['raw_info']
+        user.email = data['email'] if user.email?
+      elsif data = session['devise.google_data'] && session['devise.google_data']['extra']['raw_info']
+        user.email = data['email'] if user.email?
+      end
+    end
+  end
   # END: public section
 
   private
