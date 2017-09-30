@@ -120,3 +120,4 @@ test/html_reports/
 
 # Keep OmniAuth credentials out of the source code
 .env
+.env*
