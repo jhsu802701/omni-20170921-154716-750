@@ -17,6 +17,10 @@
     <% # BEGIN: GENERAL PUBLIC %>
     <div class="center jumbotron">
       <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
+      <br><br>
+      <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path, class: "btn btn-sm btn-primary" %>
+      <br><br>
+      <%= link_to "Sign in with Google", user_google_oauth2_omniauth_authorize_path, class: "btn btn-sm btn-primary" %>
     </div>
     <% # END: GENERAL PUBLIC %>
   <% end %>

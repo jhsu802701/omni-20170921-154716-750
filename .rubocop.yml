@@ -42,6 +42,7 @@ Metrics/LineLength:
     - config/initializers/devise.rb
     - app/models/user.rb
     - app/models/admin.rb
+    - app/controllers/users/omniauth_callbacks_controller.rb
 # END: Metrics/LineLength
 
 # BEGIN: Style/ClassAndModuleChildren
@@ -59,7 +60,7 @@ Style/SymbolArray:
     - app/controllers/users/registrations_controller.rb
     - app/controllers/admins/registrations_controller.rb
     - config/routes.rb
-    - config/routes.rb
+    - app/models/user.rb
 # END: Style/SymbolArray
 
 # BEGIN: Lint/AssignmentInCondition
@@ -74,3 +75,19 @@ Layout/TrailingWhitespace:
   Exclude:
     - config/routes.rb
 # END: Layout/TrailingWhitespace
+
+Metrics/AbcSize:
+  Exclude:
+    - app/models/user.rb
+
+Metrics/MethodLength:
+  Exclude:
+    - app/models/user.rb
+
+Metrics/CyclomaticComplexity:
+  Exclude:
+    - app/models/user.rb
+
+Metrics/PerceivedComplexity:
+  Exclude:
+    - app/models/user.rb

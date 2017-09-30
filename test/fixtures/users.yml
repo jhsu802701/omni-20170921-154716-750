@@ -25,6 +25,8 @@
 #  last_name              :string
 #  first_name             :string
 #  username               :string
+#  provider               :string
+#  uid                    :string
 #
 
 # Read about fixtures at
